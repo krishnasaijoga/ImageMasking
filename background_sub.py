@@ -20,7 +20,7 @@ import numpy as np
 #
 # plt.imshow(img), plt.show()
 
-cap = cv2.VideoCapture('lion.mp4')
+cap = cv2.VideoCapture(0)
 
 panel = np.zeros([100, 70, 3], np.uint8)
 
@@ -43,7 +43,8 @@ cv2.createTrackbar("U - v", "panel", 255, 255, nothing)
 while True:
     _, frame = cap.read()
 
-    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV) # conversion from bgr(BLUE,GREEN,RED) colorspace to hsv(HUE,SATURATION,VALUE) colorspace
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV) # conversion from bgr(BLUE,GREEN,RED) colorspace to hsv(HUE,
+    # SATURATION,VALUE) color space
 
     l_h = cv2.getTrackbarPos("L - h", "panel")
     u_h = cv2.getTrackbarPos("U - h", "panel")
@@ -63,8 +64,8 @@ while True:
 
     # cv2.imshow("mask", mask)
     # cv2.imshow("frame", frame)
-    cv2.imshow("bg", bg)
-    cv2.imshow("fg", fg)
+    cv2.imshow("background", bg)
+    cv2.imshow("foreground", fg)
     cv2.imshow("panel", panel)
     k = cv2.waitKey(30) & 0xFF
     if k == 27:
