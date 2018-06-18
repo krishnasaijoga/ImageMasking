@@ -20,7 +20,7 @@ import numpy as np
 #
 # plt.imshow(img), plt.show()
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('dc.mp4')
 
 panel = np.zeros([100, 70, 3], np.uint8)
 
@@ -43,7 +43,7 @@ cv2.createTrackbar("U - v", "panel", 255, 255, nothing)
 while True:
     _, frame = cap.read()
 
-    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV) # conversion from bgr(BLUE,GREEN,RED) colorspace to hsv(HUE,
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)  # conversion from bgr(BLUE,GREEN,RED) color space to hsv(HUE,
     # SATURATION,VALUE) color space
 
     l_h = cv2.getTrackbarPos("L - h", "panel")
