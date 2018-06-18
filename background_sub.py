@@ -43,6 +43,10 @@ cv2.createTrackbar("U - v", "panel", 255, 255, nothing)
 while True:
     _, frame = cap.read()
 
+    if frame is None:
+        cap = cv2.VideoCapture('dc.mp4')
+        _, frame = cap.read()
+
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)  # conversion from bgr(BLUE,GREEN,RED) color space to hsv(HUE,
     # SATURATION,VALUE) color space
 
