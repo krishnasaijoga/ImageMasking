@@ -8,6 +8,7 @@ cv2.namedWindow("panel")
 
 
 def nothing(x):
+    print(x)
     pass
 
 
@@ -21,12 +22,15 @@ cv2.createTrackbar("L - v", "panel", 0, 255, nothing)
 cv2.createTrackbar("U - v", "panel", 255, 255, nothing)
 
 # img = cv2.imread('harry.jpg')
-cap = cv2.VideoCapture('lion.mp4')
+cap = cv2.VideoCapture('harry.jpg')
 
 while True:
-    _, img = cap.read()
+    # _, img = cap.read()
+    img = cv2.imread('harry.jpg')
     print(img)
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    # s1 = cv2.cvtColor(img, cv2.COLOR_BGR2HLS)
+    # cv2.imshow("HLS", s1)
     # hsv = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # ret, thresh = cv2.threshold(hsv, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     l_h = cv2.getTrackbarPos("L - h", "panel")
@@ -44,7 +48,7 @@ while True:
     fg = cv2.bitwise_and(img, img, mask=mask)
     bg = cv2.bitwise_and(img, img, mask=mask_inv)
 
-    #thresh = cv2.bitwise_and(img, img, mask=thresh)
+    # thresh = cv2.bitwise_and(img, img, mask=thresh)
     # cv2.imshow("image", thresh)
     # cv2.imshow("Panel", panel)
     cv2.imshow("fg", fg)
